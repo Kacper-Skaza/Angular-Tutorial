@@ -1,0 +1,4 @@
+.task-card { background: white; padding: 10px; margin: 8px 0; display: flex; justify-content: space-between;
+             border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow-wrap: anywhere; max-width: 30vw; }
+.done span { text-decoration: line-through; color: gray; }
+button { margin-left: 10px; overflow-wrap: break-word; }

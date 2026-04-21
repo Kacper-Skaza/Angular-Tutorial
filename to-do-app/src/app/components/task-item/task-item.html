@@ -1,0 +1,8 @@
+<div class="task-card" [class.done]="task.isDone">
+  <!-- [class.done] to class binding - dodaje/usuwa klasę CSS na podstawie warunku logicznego -->
+  <span>{{ task.title }}</span>
+  <!-- ? : to ternary operator - warunkowe wyświetlanie tekstu -->
+  <button (click)="statusChanged.emit(task.id)">
+    {{ task.isDone ? 'Cofnij↩️' : 'Zrobione✅' }}
+  </button>
+</div>

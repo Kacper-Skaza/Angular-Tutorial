@@ -1,0 +1,10 @@
+{
+  "/api-sky": {
+    "target": "https://opensky-network.org",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api-sky": ""
+    }
+  }
+}

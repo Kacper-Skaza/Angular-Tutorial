@@ -1,0 +1,17 @@
+<div style="padding: 20px;">
+  <h1>To-Do App</h1>
+  <!-- (click) to event binding - nasłuchuje kliknięcia i wykonuje kod zamiast onclick w HTML -->
+  <button (click)="showModal.set(true)">➕ Dodaj nowe zadanie</button>
+
+  <div style="display: flex; gap: 20px; margin-top: 20px;">
+    <!-- [tasks] to property binding - przekazuje dane do komponentu dziecka -->
+    <!-- (toggle) to output event - komponent dziecka wysyła zdarzenie do rodzica -->
+    <app-task-list title="Do zrobienia" [tasks]="todoTasks()" (toggle)="taskService.toggleTask($event)" />
+    <app-task-list title="Zrobione" [tasks]="doneTasks()" (toggle)="taskService.toggleTask($event)" />
+  </div>
+
+  <!-- @if to Angular directive do warunkowego renderowania (zastępuje *ngIf z starszych wersji) -->
+  @if (showModal()) {
+  <app-task-modal (add)="handleAddTask($event)" (close)="showModal.set(false)" />
+  }
+</div>

@@ -1,0 +1,23 @@
+<div style="padding: 20px; font-family: Arial; line-height: 1.6;">
+  <!-- Two-way binding [(ngModel)]: zmiana w polu synchronizuje się ze zmienną nr. -->
+  <input [(ngModel)]="nr" placeholder="Numer lotu (np. CHH490)">
+
+  <!-- (click): event binding wywoływujący metodę szukaj(), która pobiera dane z API. -->
+  <button (click)="szukaj()">Sprawdź</button>
+
+  <!-- *ngIf: element pojawia się w DOM tylko gdy API zwróci dane (lot !== null). -->
+  <div *ngIf="lot" style="margin-top: 15px; border-left: 4px solid #007bff; padding-left: 15px;">
+    <!-- {{ }} interpolacja: wyświetla wartości z odpowiedzi API (pole tablicy states). -->
+    <p><b>Callsign:</b> {{ lot[1] }}</p>
+    <p><b>Kraj pochodzenia:</b> {{ lot[2] }}</p>
+
+    <!-- | pipe number: formatuje liczby z API (konwersja metrów na stopy, m/s na knoty, jednostki używane w lotnictwie). -->
+    <p><b>Wysokość barometryczna:</b> {{ lot[7] ? (lot[7] * 3.28084 | number:'1.0-0') : 'Brak danych' }} ft</p>
+    <p><b>Prędkość:</b> {{ lot[9] ? (lot[9] * 1.94384 | number:'1.0-0') : 'Brak danych' }} knots</p>
+    <p><b>Kierunek (True Track):</b> {{ lot[10] }}°</p>
+    <p><b>Squawk:</b> {{ lot[14] ? lot[14] : 'Brak' }}</p>
+  </div>
+
+  <!-- Błąd wyświetla się gdy API nie odpowiada (CORS, timeout) lub lot nie istnieje. -->
+  <p *ngIf="error" style="color: red;">{{ error }}</p>
+</div>

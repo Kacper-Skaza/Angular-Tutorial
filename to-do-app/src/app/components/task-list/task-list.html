@@ -1,0 +1,8 @@
+<div class="column">
+  <!-- {{ }} to interpolacja - wstawianie wartości ze skryptu do HTML -->
+  <h2>{{ title }} ({{ tasks.length }})</h2>
+  <!-- @for to Angular pętla (zastępuje *ngFor) - track zapobiega powtórzeniom renderowania -->
+  @for (t of tasks; track t.id) {
+  <app-task-item [task]="t" (statusChanged)="toggle.emit($event)" />
+  }
+</div>

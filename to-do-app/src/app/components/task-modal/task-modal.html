@@ -1,0 +1,12 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <h3>Nowe zadanie</h3>
+    <!-- [(ngModel)] to two-way binding - zmiany w input automatycznie aktualizują zmienną (i odwrotnie) -->
+    <!-- (keyup.enter) to event filter - nasłuchuje tylko klawisza Enter -->
+    <input [(ngModel)]="title" placeholder="Co trzeba zrobić?" (keyup.enter)="submit()" />
+    <div class="modal-buttons">
+      <button (click)="submit()">Dodaj</button>
+      <button (click)="close.emit()">Anuluj</button>
+    </div>
+  </div>
+</div>
